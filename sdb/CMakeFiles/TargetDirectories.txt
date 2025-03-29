@@ -1,2 +1,0 @@
-/home/animesh-mukherjee/resume_work/MakeYourDebugger/sdb/CMakeFiles/edit_cache.dir
-/home/animesh-mukherjee/resume_work/MakeYourDebugger/sdb/CMakeFiles/rebuild_cache.dir
