@@ -37,3 +37,13 @@
 
 .vs
 out
+
+# Ignore build directories
+build/
+cmake-build-*/
+[Bb]uild/
+
+# Ignore CMake-specific files and directories
+CMakeCache.txt
+CMakeFiles/
+*.cmake
