@@ -1,1 +1,0 @@
-cmake .. -DCMAKE_TOOLCHAIN_FILE=/home/animesh-mukherjee/resume_work/MakeYourDebugger/vcpkg/scripts/buildsystems/vcpkg.cmake

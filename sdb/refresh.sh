@@ -10,7 +10,7 @@ fi
 
 mkdir build && cd build 
 
-cmake .. -DCMAKE_TOOLCHAIN_FILE=/home/animesh-mukherjee/resume_work/MakeYourDebugger/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake
 cmake --build .
 
 fi
