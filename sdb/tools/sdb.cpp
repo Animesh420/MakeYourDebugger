@@ -55,7 +55,8 @@ namespace {
             wait_on_signal(pid);
         }
         else {
-            std::cerr << "Unknown command\n";
+            std::cerr << "Unknown command "<< command << std::endl;
+
         }
     }
 
@@ -82,7 +83,7 @@ namespace {
             const char* program_path = argv[1];
             std::cout << "Forking a child for program " << program_path << " in process "<< getpid() << std::endl;
  
-            if ((pid == fork()) < 0) {
+            if ((pid = fork()) < 0) {
                 std::perror("fork failed");
                 return -1;
             }
@@ -97,9 +98,8 @@ namespace {
                     return -1;
                 }
                 std::cout << "Calling program " << program_path << std::endl;
-                int val = execlp(program_path, program_path, nullptr);
-                std::cout << "val";
-                if (val < 0) {
+                
+                if (execlp("yes", "yes", nullptr) < 0) {
                     std::perror("Exec failed");
                     return -1;
                 }
@@ -134,7 +134,7 @@ int main(int argc, const char** argv) {
         std::string line_str;
 
         if (line == std::string_view("")) {
-            std::cout << "handling empty string" << std::endl;
+            std::cout << "handling empty string " << std::endl;
             free(line);
             if (history_length > 0) {
                 line_str = history_list()[history_length - 1]->line;
@@ -142,14 +142,14 @@ int main(int argc, const char** argv) {
         }
 
         else {
-            std::cout << "handling non empty string" << line << std::endl;
+            std::cout << "handling non empty string " << line << std::endl;
             line_str = line;
             add_history(line);
             free(line);
         }
 
         if (!line_str.empty()) {
-            std::cout << "handling command" << std::endl;
+            std::cout << "handling command " << line_str << std::endl;
             handle_command(pid, line);
         }
         
