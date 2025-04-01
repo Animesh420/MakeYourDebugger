@@ -4,9 +4,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <libsdb/pipe.hpp>
 
 std::unique_ptr<sdb::process> sdb::process::launch(std::filesystem::path path) {
 
+    pipe channel(/*close_on_exec=*/true);
     pid_t pid;
     if ((pid = fork()) < 0) {
         // Error: fork failed

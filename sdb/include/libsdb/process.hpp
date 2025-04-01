@@ -7,18 +7,20 @@
 
 namespace sdb {
 
-    struct stop_reason {
-        stop_reason(int wait_status);
-        process_state reason;
-        std::uint8_t info;
-    };
-
     enum class process_state {
         stopped,
         running,
         exited,
         terminated
     };
+
+    struct stop_reason {
+        stop_reason(int wait_status);
+        process_state reason;
+        std::uint8_t info;
+    };
+
+  
 
 
     class process {
