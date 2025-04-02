@@ -27,7 +27,7 @@ namespace sdb {
         public:
             ~process();
             process_state state() const {return state_;}
-            static std::unique_ptr<process> launch(std::filesystem::path path);
+            static std::unique_ptr<process> launch(std::filesystem::path path, bool debug=true);
             static std::unique_ptr<process> attach(pid_t pid);
 
             void resume();
@@ -37,9 +37,10 @@ namespace sdb {
         private:
             pid_t pid_ = 0;
             bool terminate_on_end_ = true;
+            bool is_attached_ = true;
             process_state state_ = process_state::stopped;
-            process(pid_t pid, bool terminate_on_end)
-                : pid_(pid), terminate_on_end_(terminate_on_end) {}
+            process(pid_t pid, bool terminate_on_end, bool is_attached)
+                : pid_(pid), terminate_on_end_(terminate_on_end), is_attached_(is_attached) {}
 
         
         process() = delete;
